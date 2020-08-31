@@ -1,0 +1,127 @@
+<div class="container">
+  <form>
+    <div  class="ui-g">
+
+      <div class="ui-g-12 ui-fluid">
+        <h3>DADOS PESSOAIS</h3>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input type="text" pInputText name="nome" ngModel #nome="ngModel" required minlength="10"/>
+
+        <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
+        <app-message [control]="nome" error="minlength" text=" O nome deve ter no mínimo {{ nome.errors?.minlength?.requiredLength }} caracteres."></app-message>
+        
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Email</label>
+        <input type="text" pInputText />
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>Data nascimento</label>
+        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" 
+                    [inline]="false" [readonlyInput]="false" name="dtNascimento" >
+        </p-calendar>
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>CPF</label>
+        <p-inputMask name="cpf" ngModel #cpf="ngModel" mask="999.999.999-99" required></p-inputMask>
+
+        <app-message [control]="nome" error="required" text="CPF é obrigatório."></app-message>       
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>Telefone</label>
+        <p-inputMask ngModel name="telefone" #telefone="ngModel" required mask="(99)99999-9999"></p-inputMask>
+
+        <app-message [control]="nome" error="required" text="Telefone é obrigatório."></app-message>
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>Sexo</label>
+        <p-dropdown [options]="sexos" placeholder="Selecione" [autoWidth]="false" #sexo>
+        </p-dropdown>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <h3>DADOS FINANCEIROS</h3>
+      </div>
+
+      <div class="ui-g-6 ui-fluid">
+        <label>Plano</label>
+        <p-dropdown [options]="planos" [filter]="true" placeholder="Selecione" [autoWidth]="false" #plano>
+        </p-dropdown>
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>Data cadastro</label>
+        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" 
+                    [inline]="false" [readonlyInput]="false" name="dtCadastro">
+        </p-calendar>
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>Data vencimento</label>
+        <p-calendar [showIcon]="true" dateFormat="dd/mm/yy" 
+                    [inline]="false" [readonlyInput]="false" name="dtCadastro">
+        </p-calendar>
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>Valor</label>
+        <input pInputText type="text" name="valor" ngModel placeholder="0,00" 
+               currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',',allowNegative:false}">
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <label>Observação</label>
+        <textarea pInputTextarea rows="3"></textarea>
+      </div>
+
+      <div class="ui-g-12 ui-fluid">
+        <h3>ENDEREÇO</h3>
+      </div>
+
+      <div class="ui-g-8 ui-fluid">
+        <label>Logradouro</label>
+        <input pInputText type="text" placeholder="Rua, Av., Travessa...">
+      </div>
+
+      <div class="ui-g-1 ui-fluid">
+        <label>Número</label>
+        <input pInputText type="text">
+      </div> 
+      
+      <div class="ui-g-3 ui-fluid">
+        <label>Complemento</label>
+        <input pInputText type="text" placeholder="Apto.; Bloco">
+      </div>
+
+      <div class="ui-g-4 ui-fluid">
+        <label>Bairro</label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Cidade</label>
+        <input pInputText type="text">
+      </div>
+
+      <div class="ui-g-3 ui-fluid">
+        <label>Estado</label>
+        <p-dropdown [options]="estados" [filter]="true" placeholder="Selecione" [autoWidth]="false" #estado>
+        </p-dropdown>
+      </div>
+
+      <div class="ui-g-2 ui-fluid">
+        <label>CEP</label>
+        <p-inputMask mask="99.999-999"></p-inputMask>
+      </div>
+
+    </div>
+  </form>
+</div>
